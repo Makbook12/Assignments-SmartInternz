@@ -1,0 +1,7 @@
+4. `/welcome` Route
+
+Add to `index.js`:
+```js
+app.get('/welcome', (req, res) => {
+  res.json({ message: "Welcome to Express!" });
+});
