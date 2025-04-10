@@ -1,0 +1,61 @@
+2. Product Details Page (React Router)
+
+Install router:
+```bash
+npm install react-router-dom
+```
+
+Setup routes:
+```jsx
+// App.jsx
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Hero from './components/Hero';
+import ProductList from './components/ProductList';
+import ProductDetails from './components/ProductDetails';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import { useState } from 'react';
+
+export default function App() {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <ProductList onClick={setSelectedProduct} />
+          </>
+        } />
+        <Route path="/details" element={<ProductDetails product={selectedProduct} />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
+}
+```
+
+**Product Details Component:**
+```jsx
+// components/ProductDetails.jsx
+import { useNavigate } from 'react-router-dom';
+
+export default function ProductDetails({ product }) {
+  const navigate = useNavigate();
+
+  if (!product) {
+    navigate('/');
+    return null;
+  }
+
+  return (
+    <div className="p-6">
+      <img src={product.image} alt={product.name} className="w-60 mx-auto" />
+      <h2 className="text-3xl mt-4">{product.name}</h2>
+      <p className="text-gray-600">{product.price}</p>
+      <button onClick={() => navigate('/')} className="mt-4 px-4 py-2 bg-blue-600 text-white rounded">Back</button>
+    </div>
+  );
+}
