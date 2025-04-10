@@ -1,0 +1,16 @@
+Q3.Build a UserCard component that takes name and email
+as props and displays them inside a styled card using
+Tailwind CSS.
+
+import React from 'react';
+
+const UserCard = ({ name, email }) => {
+  return (
+    <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg p-6">
+      <h2 className="text-xl font-bold mb-2">{name}</h2>
+      <p className="text-gray-600">{email}</p>
+    </div>
+  );
+};
+
+export default UserCard;
