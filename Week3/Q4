@@ -1,0 +1,23 @@
+Q4.Create a Button component with Tailwind CSS that has a
+blue background, white text, rounded corners, and a hover
+effect that darkens the button. Additionally, add a click event
+that logs "Button clicked!" to the console.
+
+import React from 'react';
+
+const CustomButton = () => {
+  const handleClick = () => {
+    console.log('Button clicked!');
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+    >
+      Click Me
+    </button>
+  );
+};
+
+export default CustomButton;
