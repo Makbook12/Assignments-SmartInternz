@@ -1,0 +1,46 @@
+Q5.Develop a LoginForm component with email and password
+fields using useState for form handling and Tailwind CSS
+for styling. Display an alert with the entered details when
+submitted.
+
+import React, { useState } from 'react';
+
+const LoginForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Email: ${email}\nPassword: ${password}`);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="p-6 max-w-md mx-auto bg-white shadow-md rounded">
+      <h2 className="text-2xl font-bold mb-4">Login</h2>
+      <input
+        type="email"
+        placeholder="Email"
+        className="w-full border p-2 mb-4 rounded"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        className="w-full border p-2 mb-4 rounded"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <button
+        type="submit"
+        className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+      >
+        Login
+      </button>
+    </form>
+  );
+};
+
+export default LoginForm;
